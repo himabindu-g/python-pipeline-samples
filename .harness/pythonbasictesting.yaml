@@ -59,9 +59,9 @@ pipeline:
                   identifier: BuildAndPushGCR_1
                   spec:
                     connectorRef: gcpbin2
-                    host: us-central1-docker.pkg.dev/smooth-keel-441611-d0/testing
+                    host: us-central1-docker.pkg.dev
                     projectID: smooth-keel-441611-d0
-                    imageName: python
+                    imageName: testing/python
                     tags:
                       - v1
     - stage:
@@ -89,7 +89,7 @@ pipeline:
                   name: python server
                   identifier: python_server
                   spec:
-                    connectorRef: dockerhubnov
+                    connectorRef: gcpbin2
                     image: testing/samplepython
                     shell: Sh
                     command: python3 /python-pipeline-samples/app.py
