@@ -54,15 +54,16 @@ pipeline:
                       EOM
                       cat pythondockerfile
               - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
+                  type: BuildAndPushGCR
+                  name: BuildAndPushGCR_1
+                  identifier: BuildAndPushGCR_1
                   spec:
-                    connectorRef: dockerhubnov
-                    repo: gurrapubindu1/samplepython
+                    connectorRef: gcpbin2
+                    host: us-central1-docker.pkg.dev/smooth-keel-441611-d0/testing
+                    projectID: smooth-keel-441611-d0
+                    imageName: python
                     tags:
-                      - latest
-                    dockerfile: pythondockerfile
+                      - v1
     - stage:
         name: "Integration test "
         identifier: Integration_test
