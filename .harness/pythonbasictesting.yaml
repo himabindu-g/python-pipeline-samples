@@ -54,14 +54,12 @@ pipeline:
                       EOM
                       cat pythondockerfile
               - step:
-                  type: BuildAndPushGAR
-                  name: BuildAndPushGAR_1
-                  identifier: BuildAndPushGAR_1
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: gcpharnesswithoutdeligate
-                    host: us-central1-docker.pkg.dev
-                    projectID: smooth-keel-441611-d0
-                    imageName: testing/samplepython
+                    connectorRef: dockerhubnov
+                    repo: gurrapubindu1/samplepython
                     tags:
                       - latest
                     dockerfile: pythondockerfile
