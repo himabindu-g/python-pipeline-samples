@@ -84,14 +84,3 @@ pipeline:
                   name: Background_1
                   identifier: Background_1
                   spec: {}
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    connectorRef: dockerhubnov
-                    image: curlimages/curl:7.73.0
-                    shell: Sh
-                    command: |-
-                      sleep 10
-                      curl localhost:5000
