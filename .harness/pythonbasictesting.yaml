@@ -85,15 +85,6 @@ pipeline:
                   identifier: Background_1
                   spec: {}
               - step:
-                  type: Background
-                  name: python server
-                  identifier: python_server
-                  spec:
-                    connectorRef: gcpbin2
-                    image: testing/samplepython
-                    shell: Sh
-                    command: python3 /python-pipeline-samples/app.py
-              - step:
                   type: Run
                   name: Run_1
                   identifier: Run_1
