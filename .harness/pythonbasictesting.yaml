@@ -53,17 +53,27 @@ pipeline:
                       CMD ["python" , "app.py"]
                       EOM
                       cat pythondockerfile
-              - step:
-                  type: BuildAndPushGCR
-                  name: BuildAndPushGCR_1
-                  identifier: BuildAndPushGCR_1
-                  spec:
-                    connectorRef: gcpbin2
-                    host: us-central1-docker.pkg.dev
-                    projectID: smooth-keel-441611-d0
-                    imageName: testing/python
-                    tags:
-                      - v1
+              - parallel:
+                  - step:
+                      type: BuildAndPushGCR
+                      name: BuildAndPushGCR_1
+                      identifier: BuildAndPushGCR_1
+                      spec:
+                        connectorRef: gcpbin2
+                        host: us-central1-docker.pkg.dev
+                        projectID: smooth-keel-441611-d0
+                        imageName: testing/python
+                        tags:
+                          - v1
+                  - step:
+                      type: BuildAndPushDockerRegistry
+                      name: BuildAndPushDockerRegistry_1
+                      identifier: BuildAndPushDockerRegistry_1
+                      spec:
+                        connectorRef: dockerhubnov
+                        repo: gurrapubindu1/samplepython
+                        tags:
+                          - v1
     - stage:
         name: "Integration test "
         identifier: Integration_test
