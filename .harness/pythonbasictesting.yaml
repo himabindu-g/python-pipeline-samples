@@ -64,6 +64,8 @@ pipeline:
                     imageName: testing/python
                     tags:
                       - v1
+        when:
+          pipelineStatus: Success
     - stage:
         name: "Integration test "
         identifier: Integration_test
