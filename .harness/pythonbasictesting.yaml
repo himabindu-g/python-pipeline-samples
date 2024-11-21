@@ -1,0 +1,67 @@
+pipeline:
+  name: python-basic-testing
+  identifier: pythonbasictesting
+  projectIdentifier: ORCA_onedev
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: testinggithub
+        repoName: python-pipeline-samples
+        build: <+input>
+  stages:
+    - stage:
+        name: "build and test "
+        identifier: build_and_test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: code compilation
+                  identifier: code_compilation
+                  spec:
+                    connectorRef: gcpharnesstesttt
+                    image: python:3.10.6-alpine
+                    shell: Sh
+                    command: python -m compileall ./
+              - step:
+                  type: Run
+                  name: create docker file
+                  identifier: create_docker_file
+                  spec:
+                    connectorRef: gcpharnesstesttt
+                    image: alpine
+                    shell: Sh
+                    command: |-
+                      touch pythondockerfile
+                      cat > pythondockerfile <<- EOM
+                      FROM python:3.10.6-alpine
+                      WORKDIR /python-pipeline-samples
+                      ADD . /python-pipeline-samples
+                      RUN pip install -r requirements.txt
+                      CMD ["python" , "app.py"]
+                      EOM
+                      cat pythondockerfile
+              - step:
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: gcpharnesstesttt
+                    host: us-central1-docker.pkg.dev
+                    projectID: smooth-keel-441611-d0
+                    imageName: testing/pythonsample
+                    tags:
+                      - latest
+                    dockerfile: pythondockerfile
