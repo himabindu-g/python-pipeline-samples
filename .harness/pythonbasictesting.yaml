@@ -40,7 +40,7 @@ pipeline:
                   name: create docker file
                   identifier: create_docker_file
                   spec:
-                    connectorRef: gcpharnesswithoutdeligate
+                    connectorRef: dockerhubnov
                     image: alpine
                     shell: Sh
                     command: |-
