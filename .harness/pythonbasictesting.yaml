@@ -74,6 +74,7 @@ pipeline:
                         repo: gurrapubindu1/samplepython
                         tags:
                           - v1
+                        dockerfile: pythondockerfile
     - stage:
         name: "Integration test "
         identifier: Integration_test
