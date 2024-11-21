@@ -31,7 +31,7 @@ pipeline:
                   name: code compilation
                   identifier: code_compilation
                   spec:
-                    connectorRef: gcpharnesstesttt
+                    connectorRef: gcpharnesswithoutdeligate
                     image: python:3.10.6-alpine
                     shell: Sh
                     command: python -m compileall ./
@@ -40,7 +40,7 @@ pipeline:
                   name: create docker file
                   identifier: create_docker_file
                   spec:
-                    connectorRef: gcpharnesstesttt
+                    connectorRef: gcpharnesswithoutdeligate
                     image: alpine
                     shell: Sh
                     command: |-
@@ -58,7 +58,7 @@ pipeline:
                   name: BuildAndPushGAR_1
                   identifier: BuildAndPushGAR_1
                   spec:
-                    connectorRef: gcpharnesstesttt
+                    connectorRef: gcpharnesswithoutdeligate
                     host: us-central1-docker.pkg.dev
                     projectID: smooth-keel-441611-d0
                     imageName: testing/samplepython
@@ -90,7 +90,7 @@ pipeline:
                   name: python server
                   identifier: python_server
                   spec:
-                    connectorRef: gcpharnesstesttt
+                    connectorRef: gcpharnesswithoutdeligate
                     image: testing/samplepython
                     shell: Sh
                     command: python3 /python-pipeline-samples/app.py
@@ -99,7 +99,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: gcpharnesstesttt
+                    connectorRef: gcpharnesswithoutdeligate
                     image: curlimages/curl:7.73.0
                     shell: Sh
                     command: |-
