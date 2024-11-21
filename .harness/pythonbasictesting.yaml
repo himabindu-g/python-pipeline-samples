@@ -59,9 +59,9 @@ pipeline:
                   identifier: BuildAndPushGCR_1
                   spec:
                     connectorRef: gcpbin2
-                    host: us-central1-docker.pkg.dev
+                    host: us-central1-docker.pkg.dev/testing
                     projectID: smooth-keel-441611-d0
-                    imageName: testing/python
+                    imageName: python
                     tags:
                       - v1
     - stage:
