@@ -70,7 +70,7 @@ pipeline:
                       name: BuildAndPushDockerRegistry_1
                       identifier: BuildAndPushDockerRegistry_1
                       spec:
-                        connectorRef: dockerhubnov
+                        connectorRef: dockerbin
                         repo: gurrapubindu1/samplepython
                         tags:
                           - v1
