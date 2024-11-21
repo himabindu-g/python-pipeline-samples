@@ -31,8 +31,8 @@ pipeline:
                   name: code compilation
                   identifier: code_compilation
                   spec:
-                    connectorRef: gcpharnesswithoutdeligate
-                    image: us-central1-docker.pkg.dev/smooth-keel-441611-d0/testing/python:3.10.6-alpine
+                    connectorRef: dockerhubnov
+                    image: python:3.10.6-alpine
                     shell: Sh
                     command: python -m compileall ./
               - step:
